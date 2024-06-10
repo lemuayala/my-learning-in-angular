@@ -1,17 +1,19 @@
-<div *ngIf="task">
-  <h2>{{ task.title }}</h2>
-  <p>ID: {{ task.id }}</p>
-  <p>Completed: {{ task.completed }}</p>
+<div class="container mt-4" *ngIf="task">
+  <h2 class="mb-4">Editar Tarea</h2>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Título:</label>
+      <input id="title" formControlName="title" class="form-control" />
+    </div>
+    <div class="form-check mb-3">
+      <input
+        id="completed"
+        type="checkbox"
+        formControlName="completed"
+        class="form-check-input"
+      />
+      <label for="completed" class="form-check-label">Completada</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
 </div>
-
-<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-  <label>
-    Title:
-    <input formControlName="title" />
-  </label>
-  <label>
-    Completed:
-    <input type="checkbox" formControlName="completed" />
-  </label>
-  <button type="submit">Update Task</button>
-</form>
